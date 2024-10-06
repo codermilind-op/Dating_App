@@ -15,7 +15,7 @@ This is a real-time dating app built using Python, Django, HTML, CSS, and JavaSc
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/your-username/dating-app.git](https://github.com/your-username/dating-app.git)
+   git clone 
 Use code with caution.
 
 Create a virtual environment:
