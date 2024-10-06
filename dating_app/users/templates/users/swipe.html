@@ -1,0 +1,14 @@
+<h2>Swipe Profiles</h2>
+
+<div class="profile">
+    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+    <h3>{{ profile.user.username }}</h3>
+    <p>{{ profile.bio }}</p>
+    <p>Age: {{ profile.age }}</p>
+    <p>Location: {{ profile.location }}</p>
+</div>
+
+<div class="swipe-buttons">
+    <a href="{% url 'like_profile' profile.user.id %}">Like</a>
+    <a href="{% url 'dislike_profile' profile.user.id %}">Dislike</a>
+</div>

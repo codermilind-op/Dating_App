@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dating App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'messaging/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'user_list' %}">User List</a></li>
+                <li><a href="{% url 'notification_view' %}">Notifications</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dating App</p>
+    </footer>
+    <script src="{% static 'messaging/scripts.js' %}"></script>
+</body>
+</html>

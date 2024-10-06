@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Room</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'messaging/styles.css' %}">
+    <script src="{% static 'messaging/scripts.js' %}"></script>
+    <script>
+        const roomName = "{{ room_name }}";
+        const senderId = "{{ user.id }}"; // Current user ID
+        const chatSocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/messaging/chat/' + roomName + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.sender_id === senderId ? 'Me: ' : 'Other: ') + data.message + '\n';
+        };
+
+        function sendMessage() {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                'sender_id': senderId,
+                'receiver_id': "{{ receiver_id }}"
+            }));
+            messageInputDom.value = '';
+        }
+
+        document.querySelector('#chat-message-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+                event.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+    <h2>Chat Room: {{ room_name }}</h2>
+    <textarea id="chat-log" cols="100" rows="20" readonly>
+        {% for message in messages %}
+            {{ message.sender.username }}: {{ message.message }}
+        {% endfor %}
+    </textarea><br>
+    <input id="chat-message-input" type="text" size="100">
+    <button onclick="sendMessage()">Send</button>
+</body>
+</html>

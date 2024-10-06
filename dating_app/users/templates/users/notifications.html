@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'messaging/styles.css' %}">
+</head>
+<body>
+    <h2>Your Notifications</h2>
+    <ul>
+        {% for notification in notifications %}
+            <li {% if notification.is_read %}style="font-weight: normal;"{% else %}style="font-weight: bold;"{% endif %}>
+                {{ notification.message }} - {{ notification.created_at }}
+            </li>
+        {% empty %}
+            <li>No notifications.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
