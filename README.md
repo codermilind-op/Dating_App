@@ -38,7 +38,7 @@ Use code with caution.
 
 
 
-Contributing:
+**Contributing:**
 
 Contributions are welcome! Please follow these guidelines:
 
@@ -49,6 +49,4 @@ Push your changes to your branch.
 Submit a pull request to the main branch.   
 
 
-Acknowledgements:
 
-[Thank any individuals or organizations that have contributed to the project]
