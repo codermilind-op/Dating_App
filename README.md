@@ -38,8 +38,7 @@ Use code with caution.
 
 
 
-**Contributing:**
-
+Contributing:
 Contributions are welcome! Please follow these guidelines:
 
 Fork the repository.
